@@ -20,6 +20,11 @@ class MainWindow : public QObject
         bool Menu_Neighborhood_Out_Of_Range(Image &image);
         bool Menu_Neighborhood_Out_Of_RangeNxN(Image &image);
         bool Menu_Neighborhood_MeanNxN(Image &image);
+        bool Menu_Neighborhood_PlusShapedMedian(Image &image);
+        bool Menu_Neighborhood_Median(Image &image);
+        bool Menu_Neighborhood_Max(Image &image);
+        bool Menu_Neighborhood_Min(Image &image);
+        bool Menu_Neighborhood_Emboss(Image &image);
 };
 
 #endif // MAINWINDOW_H
