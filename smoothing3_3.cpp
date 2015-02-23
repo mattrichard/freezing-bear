@@ -21,29 +21,36 @@ Modifications:
 
 bool MainWindow::Menu_Neighborhood_Smoothing3x3( Image &image )
 {
+
     if ( image.IsNull() ) return false; // not essential, but good practice
 
-    int threshold = 0;
-
     //create smoothing filter
-    int[3][3] filter = {0};
+    int filter[3][3] = {{1,2,1},{2,4,2},{1,2,1}};
 
-    filter [0][0] = 1; filter [0][1] = 2; filter [0][2] = 1;
-    filter [1][0] = 2; filter [1][1] = 4; filter [1][2] = 2;
-    filter [2][0] = 1; filter [2][1] = 2; filter [2][2] = 1;
+    //temp image
+    Image imageCopy = image;
 
     // apply binary thresholding
     // loop through each pixel as it is a point process
     int nrows = image.Height();
     int ncols = image.Width();
+    int intensity = 0;
+
+    //loop through every enter in source (now the copy)
     for ( int r = 0; r < nrows; r++ )
         for ( int c = 0; c < ncols; c++ )
         {
-            // update intensity
-            if(image[r][c] > threshold)
-                image[r][c] = 255;
-            else
-                image[r][c] = 0;
+            //apply filter on copy back into original image
+            for (int r2 = 0; r2 < 3; r2++)
+            {
+                for (int c2 = 0; c2 < 3; c2++)
+                {
+                    //here we use modulus wrapping in lookup
+                    intensity += imageCopy[(r + r2 - 1 + nrows) % nrows][(c + c2 - 1 + nrows) % ncols] * filter[r2][c2];
+                }
+            }
+            image[r][c] = intensity / 16.0;
+            intensity = 0;
         }
 
     // return true to update the image

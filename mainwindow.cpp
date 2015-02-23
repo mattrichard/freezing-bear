@@ -37,7 +37,7 @@ bool MainWindow::Menu_Histogram_Equalization(Image &image)
 
 bool MainWindow::Menu_Noise_Gaussian(Image &image)
 {
-    int sigma = 0;
+    double sigma = 0;
     if(!Dialog("Gaussian Noise").Add(sigma, "Sigma", 0, 10).Show())
         return false;
 

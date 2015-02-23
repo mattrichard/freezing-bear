@@ -15,6 +15,7 @@ class MainWindow : public QObject
         bool Menu_Histogram_Equalization(Image &image);
         bool Menu_Noise_Gaussian(Image &image);
         bool Menu_Noise_Impulse(Image &image);
+        bool Menu_Neighborhood_Smoothing3x3(Image &image);
 };
 
 #endif // MAINWINDOW_H
