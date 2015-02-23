@@ -18,7 +18,8 @@ class MainWindow : public QObject
         bool Menu_Neighborhood_Smoothing3x3(Image &image);
         bool Menu_Neighborhood_Sharpening(Image &image);
         bool Menu_Neighborhood_Out_Of_Range(Image &image);
-        bool Menu_Neighborhood_Mean_NxN(Image &image);
+        bool Menu_Neighborhood_Out_Of_RangeNxN(Image &image);
+        bool Menu_Neighborhood_MeanNxN(Image &image);
 };
 
 #endif // MAINWINDOW_H

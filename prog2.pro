@@ -3,7 +3,8 @@ SOURCES += main.cpp\
         smoothing3_3.cpp \
         sharpening.cpp \
     outofrange.cpp \
-    meanfilterN_N.cpp
+    meanfilterN_N.cpp \
+    outofrangeN_N.cpp
 
 HEADERS  += mainwindow.h
 CONFIG += qtimagelib
