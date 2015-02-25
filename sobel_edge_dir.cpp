@@ -5,17 +5,17 @@ Date: Feb 2015
 Modifications:
 */
 /******************************************************************************
-* Function: Menu_Neighborhood_Sobel_Edge_Mag                      Gx         Gy
-* Description: Finds edge magnitude using Sobel method. Then  |-1|0 |1 | | 1|0 |-1|
-*              displays relative intensity based on magnitude |-2|0 |2 | | 1|0 |-2|
-*                                                             |-1|0 |1 | | 1|0 |-1|
+* Function: Menu_Neighborhood_Sobel_Edge_Dir                      Gx         Gy
+* Description: Finds edge direction using Sobel method. Then  |-1| 0| 1| |-1|-2|-1|
+*              displays relative intensity based on direction |-2| 0| 2| | 0| 0| 0|
+*                                                             |-1| 0| 1| | 1| 2| 1|
 * Parameters: image - the image to operate on
 * Returns: true if the image was successfully updated; otherwise, false
 *****************************************************************************/
 #include "mainwindow.h"
 #include <math.h>
 
-bool MainWindow::Menu_Neighborhood_Sobel_Edge_Mag( Image &image )
+bool MainWindow::Menu_Neighborhood_Sobel_Edge_Dir( Image &image )
 {
     if ( image.IsNull() ) return false; // not essential, but good practice
 
@@ -29,7 +29,7 @@ bool MainWindow::Menu_Neighborhood_Sobel_Edge_Mag( Image &image )
     //variables
     int nrows = image.Height();
     int ncols = image.Width();
-    int intensityX,intensityY,magnitude = 0;
+    int intensityX,intensityY,direction = 0;
 
     //loop through every entry in source (now the copy)
     for ( int r = 0; r < nrows; r++ )
@@ -46,11 +46,11 @@ bool MainWindow::Menu_Neighborhood_Sobel_Edge_Mag( Image &image )
                 }
             }
 
-            //calculate magnitude
-            magnitude = sqrt((intensityX*intensityX)+(intensityY*intensityY));
+            //calculate direction
+            direction = atan2(intensityY,intensityX);
 
-            //convert magnitude to intensity level
-            image[r][c] = (magnitude / 2 * M_PI) * 255;
+            //convert direction to intensity level
+            image[r][c] = (direction / M_PI) * 255;
 
             //reset average intensities
             intensityX = 0;
@@ -60,3 +60,4 @@ bool MainWindow::Menu_Neighborhood_Sobel_Edge_Mag( Image &image )
     // return true to update the image
     return true;
 }
+

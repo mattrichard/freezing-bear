@@ -41,7 +41,8 @@ class MainWindow : public QObject
         bool Menu_Neighborhood_Laplacian(Image &image);
         bool Menu_Neighborhood_KirshMagnitude(Image &image);
         bool Menu_Neighborhood_KirshDirection(Image &image);
-        bool Menu_Neighborhood_Sobel_Edge(Image &image);
+        bool Menu_Neighborhood_Sobel_Edge_Mag(Image &image);
+        bool Menu_Neighborhood_Sobel_Edge_Dir(Image &image);
 
 };
 
