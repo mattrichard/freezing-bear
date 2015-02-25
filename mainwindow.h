@@ -1,3 +1,15 @@
+/*
+
+mainwindow.h
+
+Assignment 2 for CSC 442
+
+Author: Aubrey Olson // Matt Richard
+Date:   Feb 2015
+
+Modifications:
+*/
+
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
@@ -18,14 +30,18 @@ class MainWindow : public QObject
         bool Menu_Neighborhood_Smoothing3x3(Image &image);
         bool Menu_Neighborhood_Sharpening(Image &image);
         bool Menu_Neighborhood_Out_Of_Range(Image &image);
-        bool Menu_Neighborhood_Out_Of_RangeNxN(Image &image);
+        bool Menu_Neighborhood_RangeNxN(Image &image);
         bool Menu_Neighborhood_MeanNxN(Image &image);
-        bool Menu_Neighborhood_PlusShapedMedian(Image &image);
+        bool Menu_Neighborhood_MedianPlus(Image &image);
         bool Menu_Neighborhood_Median(Image &image);
-        bool Menu_Neighborhood_Max(Image &image);
-        bool Menu_Neighborhood_Min(Image &image);
+        bool Menu_Neighborhood_Maximum(Image &image);
+        bool Menu_Neighborhood_Minimum(Image &image);
         bool Menu_Neighborhood_Emboss(Image &image);
         bool Menu_Neighborhood_Standard_Deviation_NxN(Image &image);
+        bool Menu_Neighborhood_Laplacian(Image &image);
+        bool Menu_Neighborhood_KirshMagnitude(Image &image);
+        bool Menu_Neighborhood_KirshDirection(Image &image);
+
 };
 
 #endif // MAINWINDOW_H

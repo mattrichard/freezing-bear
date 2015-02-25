@@ -1,3 +1,15 @@
+/*
+
+median.cpp
+
+Assignment 2 for CSC 442
+
+Author: Aubrey Olson // Matt Richard
+Date:   Feb 2015
+
+Modifications:
+*/
+
 #include "mainwindow.h"
 
 #include <vector>
@@ -5,19 +17,28 @@
 
 using namespace std;
 
+/******************************************************************************
+ * Function: Menu_Neighborhood_Median
+ * Description: Replaces each pixel in the given image with the median value 
+                in an nxn neighborhood of the pixel.
+ * Parameters: image - the image to operate on
+ * Returns: true if the image was successfully updated; otherwise, false
+ *****************************************************************************/
 bool MainWindow::Menu_Neighborhood_Median(Image &image)
 {
+    Image imageCopy = image;
+
     if(image.IsNull())
         return false;
 
-    int n;
+    int n = 3;
+    // Get n from the user
     if(!Dialog("Filter size").Add(n, "size").Show())
         return false;
 
+    // Validate n
     if(n <= 0 || n > min((int)image.Height(), (int)image.Width()))
         return false;
-
-    Image imageCopy = image;
 
     int lower = -n / 2;
     int upper = n / 2;
@@ -27,12 +48,14 @@ bool MainWindow::Menu_Neighborhood_Median(Image &image)
 
     int nrows = image.Height();
     int ncols = image.Width();
+    // Loop through every pixel in the image
     for(int r = 0; r < nrows; r++)
     {
         for(int c = 0; c < ncols; c++)
         {
             vector<int> list;
 
+            // Add each pixel to a list to be sorted
             for(int i = lower; i <= upper; i++)
                 for(int j = lower; j <= upper; j++)
                     list.push_back(imageCopy[(r + i + nrows) % nrows][(c + j + ncols) % ncols]);
