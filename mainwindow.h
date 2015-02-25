@@ -25,6 +25,7 @@ class MainWindow : public QObject
         bool Menu_Neighborhood_Max(Image &image);
         bool Menu_Neighborhood_Min(Image &image);
         bool Menu_Neighborhood_Emboss(Image &image);
+        bool Menu_Neighborhood_Standard_Deviation_NxN(Image &image);
 };
 
 #endif // MAINWINDOW_H
