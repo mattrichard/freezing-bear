@@ -28,7 +28,7 @@ bool MainWindow::Menu_Neighborhood_RangeNxN( Image &image )
     if ( image.IsNull() ) return false; // not essential, but good practice
 
     //prompt user for filter size
-    int filterSize = 0;
+    int filterSize = 3;
     if(!Dialog("Filter Size").Add(filterSize, "Size").Show())
         return false;
 

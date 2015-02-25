@@ -12,15 +12,16 @@ Modifications:
 
 /******************************************************************************
  * Function: Menu_Neighborhood_Standard_Deviation_NxN
- * Description: Looks for STDdev in a NxN filter. Compares  |1|1|1|
- *              all values surrounding to each other. STDdev|1|1|1|
+ * Description: Looks for stdDev in a NxN filter. Compares  |1|1|1|
+ *              all values surrounding to each other. stdDev|1|1|1|
  *              is computed and middle pixel is replaced    |1|1|1|
- *              by STDdev value.
+ *              by stdDev value.
  * Parameters: image - the image to operate on
  * Returns: true if the image was successfully updated; otherwise, false
  *****************************************************************************/
 
 #include "mainwindow.h"
+#include <math.h>
 
 bool MainWindow::Menu_Neighborhood_Standard_Deviation_NxN( Image &image )
 {
@@ -28,7 +29,7 @@ bool MainWindow::Menu_Neighborhood_Standard_Deviation_NxN( Image &image )
     if ( image.IsNull() ) return false; // not essential, but good practice
 
     //prompt user for filter size
-    int filterSize = 0;
+    int filterSize = 3;
     if(!Dialog("Filter Size").Add(filterSize, "Size").Show())
         return false;
 
@@ -39,6 +40,7 @@ bool MainWindow::Menu_Neighborhood_Standard_Deviation_NxN( Image &image )
     int nrows = image.Height();
     int ncols = image.Width();
     int intensity = 0;
+    int intensityArray[filterSize*filterSize];
     int offset = (filterSize - 0.5) / 2;
     int mean = 0;
     int stdDev = 0;
@@ -61,6 +63,8 @@ bool MainWindow::Menu_Neighborhood_Standard_Deviation_NxN( Image &image )
                     //here we use modulus wrapping in lookup
                     intensity = imageCopy[(r + r2 - offset + nrows) % nrows][(c + c2 - offset + nrows) % ncols];
 
+                    intensityArray[r2*filterSize + c2] = intensity;
+
                     //increment sum
                     mean += intensity;
                 }
@@ -69,8 +73,17 @@ bool MainWindow::Menu_Neighborhood_Standard_Deviation_NxN( Image &image )
             //determine mean
             mean = mean / (filterSize*filterSize);
 
+            //determine stdDev
+            for(int i = 0; i < filterSize*filterSize; i++)
+            {
+                stdDev += (intensityArray[i] - mean) * (intensityArray[i] - mean);
+            }
+
+            stdDev = stdDev / (filterSize*filterSize - 1);
+            stdDev = sqrt(stdDev);
+
             //update image
-            image[r][c] = intensity;
+            image[r][c] = stdDev;
 
             //reset average intensity,mean,stddev
             intensity = 0;
