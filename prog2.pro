@@ -14,7 +14,7 @@ SOURCES += main.cpp\
     emboss.cpp \
     median.cpp \
     standardDevN_N.cpp \
-    sobel_edge.cpp
+    sobel_edge_mag.cpp
 
 HEADERS  += mainwindow.h
 CONFIG += qtimagelib
