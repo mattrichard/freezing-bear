@@ -4,6 +4,12 @@
 
 using namespace std;
 
+/******************************************************************************
+ * Function: Menu_Neighborhood_KirshDirection
+ * Description:
+ * Parameters: image - the image to operate on
+ * Returns: true if the image was successfully updated; otherwise, false
+ *****************************************************************************/
 bool MainWindow::Menu_Neighborhood_KirshMagnitude(Image &image)
 {
     if(image.IsNull()) return false;
@@ -20,6 +26,7 @@ bool MainWindow::Menu_Neighborhood_KirshMagnitude(Image &image)
 
     int nrows = image.Height();
     int ncols = image.Width();
+    // Loop through every pixel in the image
     for(int r = 0; r < nrows; r++)
     {
         for(int c = 0; c < ncols; c++)
@@ -27,6 +34,7 @@ bool MainWindow::Menu_Neighborhood_KirshMagnitude(Image &image)
             int intensity[8] = { 0 };
             for(int i = -1; i <=1; i++)
             {
+                // Convolve each of the 8 masks
                 for(int j = -1; j <= 1; j++)
                 {
                     intensity[0] += imageCopy[(r + i + nrows) % nrows][(c + j + ncols) % ncols] * mask1[i + 1][j + 1];
@@ -40,6 +48,7 @@ bool MainWindow::Menu_Neighborhood_KirshMagnitude(Image &image)
                 }
             }
 
+            // Determine the magnitude from the masks
             int magnitude = 0;
             for(int i = 0; i < 8; i++)
                 if(intensity[i] > magnitude)

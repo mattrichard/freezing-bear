@@ -15,12 +15,12 @@ Modifications:
 using namespace std;
 
 /******************************************************************************
- * Function: Menu_Neighborhood_Minimum
+ * Function: Menu_Neighborhood_Minimum_NxN
  * Description:
  * Parameters: image - the image to operate on
  * Returns: true if the image was successfully updated; otherwise, false
  *****************************************************************************/
-bool MainWindow::Menu_Neighborhood_Minimum(Image &image)
+bool MainWindow::Menu_Neighborhood_Minimum_NxN(Image &image)
 {
     Image imageCopy = image;
 
@@ -29,7 +29,7 @@ bool MainWindow::Menu_Neighborhood_Minimum(Image &image)
 
     int n = 3;
     // Get n from the user
-    if(!Dialog("Filter size").Add(n, "size").Show())
+    if(!Dialog("Filter size").Add(n, "Size").Show())
         return false;
 
     // Validate n

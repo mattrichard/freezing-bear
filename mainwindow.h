@@ -33,9 +33,9 @@ class MainWindow : public QObject
         bool Menu_Neighborhood_RangeNxN(Image &image);
         bool Menu_Neighborhood_MeanNxN(Image &image);
         bool Menu_Neighborhood_MedianPlus(Image &image);
-        bool Menu_Neighborhood_Median(Image &image);
-        bool Menu_Neighborhood_Maximum(Image &image);
-        bool Menu_Neighborhood_Minimum(Image &image);
+        bool Menu_Neighborhood_Median_NxN(Image &image);
+        bool Menu_Neighborhood_Maximum_NxN(Image &image);
+        bool Menu_Neighborhood_Minimum_NxN(Image &image);
         bool Menu_Neighborhood_Emboss(Image &image);
         bool Menu_Neighborhood_Standard_Deviation_NxN(Image &image);
         bool Menu_Neighborhood_Laplacian(Image &image);

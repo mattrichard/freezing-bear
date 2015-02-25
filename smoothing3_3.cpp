@@ -1,27 +1,20 @@
 /*
-
 Assignment 2 for CSC 442
-
 Author: Aubrey Olson // Matt Richard
-Date:   Feb 2015
-
+Date: Feb 2015
 Modifications:
 */
-
 /******************************************************************************
- * Function: Menu_Neighborhood_Smoothing3x3
- * Description: Smooths an image base on a 3x3 filter |1|2|1|
- *                                                    |2|4|2|
- *                                                    |1|2|1|
- * Parameters: image - the image to operate on
- * Returns: true if the image was successfully updated; otherwise, false
- *****************************************************************************/
-
+* Function: Menu_Neighborhood_Smoothing3x3
+* Description: Smooths an image base on a 3x3 filter |1|2|1|
+* |2|4|2|
+* |1|2|1|
+* Parameters: image - the image to operate on
+* Returns: true if the image was successfully updated; otherwise, false
+*****************************************************************************/
 #include "mainwindow.h"
-
 bool MainWindow::Menu_Neighborhood_Smoothing3x3( Image &image )
 {
-
     if ( image.IsNull() ) return false; // not essential, but good practice
 
     //create smoothing filter

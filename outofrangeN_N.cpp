@@ -13,7 +13,7 @@ Modifications:
 /******************************************************************************
  * Function: Menu_Neighborhood_RangeNxN
  * Description: Looks for range in a NxN filter. Compares   |1|1|1|
- *              all values surrounding to each toerh. Range |1|1|1|
+ *              all values surrounding to each other. Range |1|1|1|
  *              is computed and middle pixel is replaced    |1|1|1|
  *              by range value.
  * Parameters: image - the image to operate on

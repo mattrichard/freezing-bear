@@ -18,13 +18,13 @@ Modifications:
 using namespace std;
 
 /******************************************************************************
- * Function: Menu_Neighborhood_Median
- * Description: Replaces each pixel in the given image with the median value 
+ * Function: Menu_Neighborhood_Median_NxN
+ * Description: Replaces each pixel in the given image with the median value
                 in an nxn neighborhood of the pixel.
  * Parameters: image - the image to operate on
  * Returns: true if the image was successfully updated; otherwise, false
  *****************************************************************************/
-bool MainWindow::Menu_Neighborhood_Median(Image &image)
+bool MainWindow::Menu_Neighborhood_Median_NxN(Image &image)
 {
     Image imageCopy = image;
 
@@ -33,7 +33,7 @@ bool MainWindow::Menu_Neighborhood_Median(Image &image)
 
     int n = 3;
     // Get n from the user
-    if(!Dialog("Filter size").Add(n, "size").Show())
+    if(!Dialog("Filter size").Add(n, "Size").Show())
         return false;
 
     // Validate n
