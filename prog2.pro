@@ -13,7 +13,8 @@ SOURCES += main.cpp\
     minimum.cpp \
     emboss.cpp \
     median.cpp \
-    standardDevN_N.cpp
+    standardDevN_N.cpp \
+    sobel_edge.cpp
 
 HEADERS  += mainwindow.h
 CONFIG += qtimagelib
