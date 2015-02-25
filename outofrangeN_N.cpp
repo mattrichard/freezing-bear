@@ -11,7 +11,7 @@ Modifications:
 */
 
 /******************************************************************************
- * Function: Menu_Neighborhood_Out_Of_RangeNxN
+ * Function: Menu_Neighborhood_RangeNxN
  * Description: Looks for noise in a NxN filter. Compares   |1|1|1|
  *              all values surrounding to middle pixel. If  |1|X|1|
  *              determined to be noise (outside of )  |1|1|1|
@@ -22,7 +22,7 @@ Modifications:
 
 #include "mainwindow.h"
 
-bool MainWindow::Menu_Neighborhood_Out_Of_RangeNxN( Image &image )
+bool MainWindow::Menu_Neighborhood_RangeNxN( Image &image )
 {
 
     if ( image.IsNull() ) return false; // not essential, but good practice

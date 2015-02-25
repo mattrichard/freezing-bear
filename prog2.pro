@@ -11,10 +11,8 @@ SOURCES += main.cpp\
     maximum.cpp \
     median_plus.cpp \
     minimum.cpp \
-    standardDevN_N.cpp
     emboss.cpp \
     median.cpp \
-    plus_shaped_median.cpp \
     standardDevN_N.cpp
 
 HEADERS  += mainwindow.h
