@@ -28,15 +28,15 @@ bool MainWindow::Menu_Neighborhood_MeanNxN( Image &image )
     if ( image.IsNull() ) return false; // not essential, but good practice
 
     //prompt user for filter size
-    int threshold = 0;
-    if(!Dialog("Filter Size").Add(threshold, "Size").Show())
+    int filterSize = 0;
+    if(!Dialog("Filter Size").Add(filterSize, "Size").Show())
         return false;
 
     //create filter (all ones)
-    int filter[threshold][threshold];
+    int filter[filterSize][filterSize];
 
-    for ( int r = 0; r < threshold; r++ )
-        for ( int c = 0; c < threshold; c++ )
+    for ( int r = 0; r < filterSize; r++ )
+        for ( int c = 0; c < filterSize; c++ )
         {
             filter[r][c] = 1;
         }
@@ -48,12 +48,12 @@ bool MainWindow::Menu_Neighborhood_MeanNxN( Image &image )
     int nrows = image.Height();
     int ncols = image.Width();
     int intensity = 0;
-    int offset = (threshold - 0.5) / 2;
+    int offset = (filterSize - 0.5) / 2;
 
-    //check that threshold isn't nonsense (i.e. 0 or lower or larger than image)
-    if(threshold < 1)
+    //check that filterSize isn't nonsense (i.e. 0 or lower or larger than image)
+    if(filterSize < 1)
         return false;
-    if(threshold > nrows || threshold > ncols)
+    if(filterSize > nrows || filterSize > ncols)
         return false;
 
     //loop through every entry in source (now the copy)
@@ -61,9 +61,9 @@ bool MainWindow::Menu_Neighborhood_MeanNxN( Image &image )
         for ( int c = 0; c < ncols; c++ )
         {
             //apply filter on copy back into original image
-            for (int r2 = 0; r2 < threshold; r2++)
+            for (int r2 = 0; r2 < filterSize; r2++)
             {
-                for (int c2 = 0; c2 < threshold; c2++)
+                for (int c2 = 0; c2 < filterSize; c2++)
                 {
                     //here we use modulus wrapping in lookup
                     intensity += imageCopy[(r + r2 - offset + nrows) % nrows][(c + c2 - offset + nrows) % ncols] * filter[r2][c2];
@@ -71,10 +71,10 @@ bool MainWindow::Menu_Neighborhood_MeanNxN( Image &image )
             }
 
             //weighted average
-            intensity = intensity / (threshold*threshold);
+            intensity = intensity / (filterSize*filterSize);
 
-            //if the average intensity of surrounding pixels minus the middle pixel is more than the threshold, replace middle with average
-            if((imageCopy[r][c] - intensity) > threshold)
+            //if the average intensity of surrounding pixels minus the middle pixel is more than the filterSize, replace middle with average
+            if((imageCopy[r][c] - intensity) > filterSize)
                 image[r][c] = intensity;
 
             //reset average intensity

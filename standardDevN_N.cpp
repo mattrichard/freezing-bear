@@ -12,10 +12,10 @@ Modifications:
 
 /******************************************************************************
  * Function: Menu_Neighborhood_Standard_Deviation_NxN
- * Description: Looks for difference in NxN filter. Compares   |1|1|1|
- *              all values surrounding to each other. Then     |1|X|1|
- *              an average and standard deviation is taken and |1|1|1|
- *              converted to an intensity.
+ * Description: Looks for STDdev in a NxN filter. Compares  |1|1|1|
+ *              all values surrounding to each other. STDdev|1|1|1|
+ *              is computed and middle pixel is replaced    |1|1|1|
+ *              by STDdev value.
  * Parameters: image - the image to operate on
  * Returns: true if the image was successfully updated; otherwise, false
  *****************************************************************************/

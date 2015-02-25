@@ -12,10 +12,10 @@ Modifications:
 
 /******************************************************************************
  * Function: Menu_Neighborhood_RangeNxN
- * Description: Looks for noise in a NxN filter. Compares   |1|1|1|
- *              all values surrounding to middle pixel. If  |1|X|1|
- *              determined to be noise (outside of )  |1|1|1|
- *              then middle pixel replaced by average
+ * Description: Looks for range in a NxN filter. Compares   |1|1|1|
+ *              all values surrounding to each toerh. Range |1|1|1|
+ *              is computed and middle pixel is replaced    |1|1|1|
+ *              by range value.
  * Parameters: image - the image to operate on
  * Returns: true if the image was successfully updated; otherwise, false
  *****************************************************************************/
@@ -28,8 +28,8 @@ bool MainWindow::Menu_Neighborhood_RangeNxN( Image &image )
     if ( image.IsNull() ) return false; // not essential, but good practice
 
     //prompt user for filter size
-    int threshold = 0;
-    if(!Dialog("Filter Size").Add(threshold, "Size").Show())
+    int filterSize = 0;
+    if(!Dialog("Filter Size").Add(filterSize, "Size").Show())
         return false;
 
     //temp image
@@ -39,14 +39,14 @@ bool MainWindow::Menu_Neighborhood_RangeNxN( Image &image )
     int nrows = image.Height();
     int ncols = image.Width();
     int intensity = 0;
-    int offset = (threshold - 0.5) / 2;
+    int offset = (filterSize - 0.5) / 2;
     int maxRange = 0;
     int minRange = 0;
 
-    //check that threshold isn't nonsense (i.e. 0 or lower or larger than image)
-    if(threshold < 1)
+    //check that filterSize isn't nonsense (i.e. 0 or lower or larger than image)
+    if(filterSize < 1)
         return false;
-    if(threshold > nrows || threshold > ncols)
+    if(filterSize > nrows || filterSize > ncols)
         return false;
 
     //loop through every entry in source (now the copy)
@@ -57,9 +57,9 @@ bool MainWindow::Menu_Neighborhood_RangeNxN( Image &image )
             maxRange = minRange = imageCopy[(r - offset + nrows) % nrows][(c - offset + nrows) % ncols];
 
             //apply filter on copy back into original image
-            for (int r2 = 0; r2 < threshold; r2++)
+            for (int r2 = 0; r2 < filterSize; r2++)
             {
-                for (int c2 = 0; c2 < threshold; c2++)
+                for (int c2 = 0; c2 < filterSize; c2++)
                 {
                     //here we use modulus wrapping in lookup
                     intensity = imageCopy[(r + r2 - offset + nrows) % nrows][(c + c2 - offset + nrows) % ncols];
