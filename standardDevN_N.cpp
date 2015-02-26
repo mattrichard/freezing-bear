@@ -61,7 +61,7 @@ bool MainWindow::Menu_Neighborhood_Standard_Deviation_NxN( Image &image )
                 for (int c2 = 0; c2 < filterSize; c2++)
                 {
                     //here we use modulus wrapping in lookup
-                    intensity = imageCopy[(r + r2 - offset + nrows) % nrows][(c + c2 - offset + nrows) % ncols];
+                    intensity = imageCopy[(r + r2 - offset + nrows) % nrows][(c + c2 - offset + ncols) % ncols];
 
                     intensityArray[r2*filterSize + c2] = intensity;
 
