@@ -43,6 +43,7 @@ class MainWindow : public QObject
         bool Menu_Neighborhood_KirshDirection(Image &image);
         bool Menu_Neighborhood_Sobel_Edge_Mag(Image &image);
         bool Menu_Neighborhood_Sobel_Edge_Dir(Image &image);
+        bool Menu_Neighborhood_Gaussian_Smoothing(Image &image);
 
 };
 

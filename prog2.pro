@@ -15,7 +15,8 @@ SOURCES += main.cpp\
     median.cpp \
     standardDevN_N.cpp \
     sobel_edge_mag.cpp \
-    sobel_edge_dir.cpp
+    sobel_edge_dir.cpp \
+    gaussian_smoothing.cpp
 
 HEADERS  += mainwindow.h
 CONFIG += qtimagelib
