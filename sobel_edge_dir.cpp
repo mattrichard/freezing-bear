@@ -21,7 +21,7 @@ bool MainWindow::Menu_Neighborhood_Sobel_Edge_Dir( Image &image )
 
     //create smoothing filter
     int filterGx[3][3] = {{-1,0,1},{-2,0,2},{-1,0,1}};
-    int filterGy[3][3] = {{-1,-2,-1},{0,0,0},{1,2,1}};
+    int filterGy[3][3] = {{1,2,1},{0,0,0},{-1,-2,-1}};
 
     //temp image
     Image imageCopy = image;
@@ -29,7 +29,8 @@ bool MainWindow::Menu_Neighborhood_Sobel_Edge_Dir( Image &image )
     //variables
     int nrows = image.Height();
     int ncols = image.Width();
-    int intensityX,intensityY,direction = 0;
+    int intensityX,intensityY = 0;
+    double direction = 0;
 
     //loop through every entry in source (now the copy)
     for ( int r = 0; r < nrows; r++ )
@@ -49,8 +50,11 @@ bool MainWindow::Menu_Neighborhood_Sobel_Edge_Dir( Image &image )
             //calculate direction
             direction = atan2(intensityY,intensityX);
 
+            if(direction < 0)
+                direction += (2*M_PI);
+
             //convert direction to intensity level
-            image[r][c] = (direction / M_PI) * 255;
+            image[r][c] = (direction /(2*M_PI) ) * 255;
 
             //reset average intensities
             intensityX = 0;

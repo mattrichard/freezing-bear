@@ -21,7 +21,7 @@ bool MainWindow::Menu_Neighborhood_Sobel_Edge_Mag( Image &image )
 
     //create smoothing filter
     int filterGx[3][3] = {{-1,0,1},{-2,0,2},{-1,0,1}};
-    int filterGy[3][3] = {{-1,-2,-1},{0,0,0},{1,2,1}};
+    int filterGy[3][3] = {{1,2,1},{0,0,0},{-1,-2,-1}};
 
     //temp image
     Image imageCopy = image;
