@@ -54,7 +54,7 @@ bool MainWindow::Menu_Neighborhood_RangeNxN( Image &image )
         for ( int c = 0; c < ncols; c++ )
         {
             //set max/min to an initial value within the matrix
-            maxRange = minRange = imageCopy[(r - offset + nrows) % nrows][(c - offset + nrows) % ncols];
+            maxRange = minRange = imageCopy[(r - offset + nrows) % nrows][(c - offset + ncols) % ncols];
 
             //apply filter on copy back into original image
             for (int r2 = 0; r2 < filterSize; r2++)
@@ -62,7 +62,7 @@ bool MainWindow::Menu_Neighborhood_RangeNxN( Image &image )
                 for (int c2 = 0; c2 < filterSize; c2++)
                 {
                     //here we use modulus wrapping in lookup
-                    intensity = imageCopy[(r + r2 - offset + nrows) % nrows][(c + c2 - offset + nrows) % ncols];
+                    intensity = imageCopy[(r + r2 - offset + nrows) % nrows][(c + c2 - offset + ncols) % ncols];
 
                     //check if we have hit new min or max
                     if(intensity > maxRange)

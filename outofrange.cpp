@@ -52,7 +52,7 @@ bool MainWindow::Menu_Neighborhood_Out_Of_Range( Image &image )
                 for (int c2 = 0; c2 < 3; c2++)
                 {
                     //here we use modulus wrapping in lookup
-                    intensity += imageCopy[(r + r2 - 1 + nrows) % nrows][(c + c2 - 1 + nrows) % ncols] * filter[r2][c2];
+                    intensity += imageCopy[(r + r2 - 1 + nrows) % nrows][(c + c2 - 1 + ncols) % ncols] * filter[r2][c2];
                 }
             }
 
