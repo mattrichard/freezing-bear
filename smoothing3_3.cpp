@@ -2,7 +2,6 @@
 Assignment 2 for CSC 442
 Author: Aubrey Olson // Matt Richard
 Date: Feb 2015
-Modifications:
 */
 /******************************************************************************
 * Function: Menu_Neighborhood_Smoothing

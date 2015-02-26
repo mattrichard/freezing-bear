@@ -33,8 +33,6 @@ Necessary Files:
     sobel_edge_mag.cpp \
     sobel_edge_dir.cpp \
     gaussian_smoothing.cpp
-
-Modifications:
 */
 
 #include "mainwindow.h"
