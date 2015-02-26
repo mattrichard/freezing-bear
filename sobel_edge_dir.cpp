@@ -6,9 +6,9 @@ Modifications:
 */
 /******************************************************************************
 * Function: Menu_Neighborhood_Sobel_Edge_Dir                      Gx         Gy
-* Description: Finds edge direction using Sobel method. Then  |-1| 0| 1| |-1|-2|-1|
+* Description: Finds edge direction using Sobel method. Then  |-1| 0| 1| | 1| 2| 1|
 *              displays relative intensity based on direction |-2| 0| 2| | 0| 0| 0|
-*                                                             |-1| 0| 1| | 1| 2| 1|
+*                                                             |-1| 0| 1| |-1|-2|-1|
 * Parameters: image - the image to operate on
 * Returns: true if the image was successfully updated; otherwise, false
 *****************************************************************************/

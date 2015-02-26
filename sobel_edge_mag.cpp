@@ -6,9 +6,9 @@ Modifications:
 */
 /******************************************************************************
 * Function: Menu_Neighborhood_Sobel_Edge_Mag                      Gx         Gy
-* Description: Finds edge magnitude using Sobel method. Then  |-1|0 |1 | | 1|0 |-1|
-*              displays relative intensity based on magnitude |-2|0 |2 | | 1|0 |-2|
-*                                                             |-1|0 |1 | | 1|0 |-1|
+* Description: Finds edge magnitude using Sobel method. Then  |-1| 0| 1| | 1| 2| 1|
+*              displays relative intensity based on magnitude |-2| 0| 2| | 0| 0| 0|
+*                                                             |-1| 0| 1| |-1|-2|-1|
 * Parameters: image - the image to operate on
 * Returns: true if the image was successfully updated; otherwise, false
 *****************************************************************************/
