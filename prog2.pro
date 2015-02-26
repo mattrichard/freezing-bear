@@ -2,7 +2,7 @@ SOURCES += main.cpp\
     mainwindow.cpp \
     smoothing3_3.cpp \
     sharpening.cpp \
-    outofrange.cpp \
+    range.cpp \
     meanfilterN_N.cpp \
     outofrangeN_N.cpp \
     kirsh_direction.cpp \
