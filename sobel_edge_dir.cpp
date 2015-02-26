@@ -41,8 +41,8 @@ bool MainWindow::Menu_Neighborhood_Sobel_Edge_Dir( Image &image )
                 for (int c2 = 0; c2 < 3; c2++)
                 {
                     //here we use modulus wrapping in lookup
-                    intensityX += imageCopy[(r + r2 - 1 + nrows) % nrows][(c + c2 - 1 + nrows) % ncols] * filterGx[r2][c2];
-                    intensityY += imageCopy[(r + r2 - 1 + nrows) % nrows][(c + c2 - 1 + nrows) % ncols] * filterGy[r2][c2];
+                    intensityX += imageCopy[(r + r2 - 1 + nrows) % nrows][(c + c2 - 1 + ncols) % ncols] * filterGx[r2][c2];
+                    intensityY += imageCopy[(r + r2 - 1 + nrows) % nrows][(c + c2 - 1 + ncols) % ncols] * filterGy[r2][c2];
                 }
             }
 

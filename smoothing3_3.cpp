@@ -5,7 +5,7 @@ Date: Feb 2015
 Modifications:
 */
 /******************************************************************************
-* Function: Menu_Neighborhood_Smoothing3x3
+* Function: Menu_Neighborhood_Smoothing
 * Description: Smooths an image base on a 3x3 filter |1|2|1|
 * |2|4|2|
 * |1|2|1|
@@ -13,7 +13,7 @@ Modifications:
 * Returns: true if the image was successfully updated; otherwise, false
 *****************************************************************************/
 #include "mainwindow.h"
-bool MainWindow::Menu_Neighborhood_Smoothing3x3( Image &image )
+bool MainWindow::Menu_Neighborhood_Smoothing( Image &image )
 {
     if ( image.IsNull() ) return false; // not essential, but good practice
 

@@ -66,7 +66,7 @@ bool MainWindow::Menu_Neighborhood_MeanNxN( Image &image )
                 for (int c2 = 0; c2 < filterSize; c2++)
                 {
                     //here we use modulus wrapping in lookup
-                    intensity += imageCopy[(r + r2 - offset + nrows) % nrows][(c + c2 - offset + nrows) % ncols] * filter[r2][c2];
+                    intensity += imageCopy[(r + r2 - offset + nrows) % nrows][(c + c2 - offset + ncols) % ncols] * filter[r2][c2];
                 }
             }
 
