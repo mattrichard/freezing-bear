@@ -16,7 +16,8 @@ using namespace std;
 
 /******************************************************************************
  * Function: Menu_Neighborhood_Minimum_NxN
- * Description:
+ * Description: Replaces each pixel in the given image with the mininum
+ *              intensity in an nxn neighborhood of the pixel.
  * Parameters: image - the image to operate on
  * Returns: true if the image was successfully updated; otherwise, false
  *****************************************************************************/

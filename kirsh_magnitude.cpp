@@ -6,14 +6,12 @@ using namespace std;
 
 /******************************************************************************
  * Function: Menu_Neighborhood_KirshDirection
- * Description:
+ * Description: Uses 8 kirsh masks to detect edge magnitude on the given image.
  * Parameters: image - the image to operate on
  * Returns: true if the image was successfully updated; otherwise, false
  *****************************************************************************/
 bool MainWindow::Menu_Neighborhood_KirshMagnitude(Image &image)
 {
-    if(image.IsNull()) return false;
-
     Image imageCopy = image;
     int mask1[3][3] = {{-3, -3, -3}, {-3, 0, -3}, {5, 5, 5}};
     int mask2[3][3] = {{-3, -3, -3}, {5, 0, -3}, {5, 5, -3}};
@@ -23,6 +21,9 @@ bool MainWindow::Menu_Neighborhood_KirshMagnitude(Image &image)
     int mask6[3][3] = {{-3, 5, 5}, {-3, 0, 5}, {-3, -3, -3}};
     int mask7[3][3] = {{-3, -3, 5}, {-3, 0, 5}, {-3, -3, 5}};
     int mask8[3][3] = {{-3, -3, -3}, {-3, 0, 5}, {-3, 5, 5}};
+
+    if(image.IsNull())
+        return false;
 
     int nrows = image.Height();
     int ncols = image.Width();
@@ -56,6 +57,7 @@ bool MainWindow::Menu_Neighborhood_KirshMagnitude(Image &image)
 
             magnitude /= 3.0;
 
+            // Make sure the magnitude is in the valid range
             if(magnitude > 255)
                 magnitude = 255;
             else if(magnitude < 0)

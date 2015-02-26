@@ -18,7 +18,7 @@ using namespace std;
 
 /******************************************************************************
  * Function: Menu_Neighborhood_KirshDirection
- * Description:
+ * Description: Uses 8 kirsh masks to detect edge direction on the given image.
  * Parameters: image - the image to operate on
  * Returns: true if the image was successfully updated; otherwise, false
  *****************************************************************************/

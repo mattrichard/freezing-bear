@@ -16,7 +16,8 @@ using namespace std;
 
 /******************************************************************************
  * Function: Menu_Neighborhood_Maximum_NxN
- * Description:
+ * Description: Replaces each pixel with the maximum intensity in a nxn
+ *              neighborhood of the pixel.
  * Parameters: image - the image to operate on
  * Returns: true if the image was successfully updated; otherwise, false
  *****************************************************************************/

@@ -14,7 +14,7 @@ Modifications:
 
 /******************************************************************************
  * Function: Menu_Neighborhood_Emboss
- * Description:
+ * Description: Embosses the given image.
  * Parameters: image - the image to operate on
  * Returns: true if the image was successfully updated; otherwise, false
  *****************************************************************************/

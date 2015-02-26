@@ -14,7 +14,7 @@ Modifications:
 
 /******************************************************************************
  * Function: Menu_Neighborhood_Laplacian
- * Description:
+ * Description: Uses a laplacian filter to detect edges in the given image.
  * Parameters: image - the image to operate on
  * Returns: true if the image was successfully updated; otherwise, false
  *****************************************************************************/
@@ -38,6 +38,8 @@ bool MainWindow::Menu_Neighborhood_Laplacian(Image &image)
             for(int i = -1; i <=1; i++)
                 for(int j = -1; j <= 1; j++)
                     intensity += imageCopy[(r + i + nrows) % nrows][(c + j + ncols) % ncols] * mask[i + 1][j + 1];
+
+            intensity += 128;
 
             // Make sure the intensity is in the valid range
             if(intensity > 255)
