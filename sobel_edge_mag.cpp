@@ -29,7 +29,8 @@ bool MainWindow::Menu_Neighborhood_Sobel_Edge_Mag( Image &image )
     //variables
     int nrows = image.Height();
     int ncols = image.Width();
-    int intensityX,intensityY,magnitude = 0;
+    double intensityX,intensityY = 0;
+    double magnitude = 0;
 
     //loop through every entry in source (now the copy)
     for ( int r = 0; r < nrows; r++ )
@@ -41,16 +42,20 @@ bool MainWindow::Menu_Neighborhood_Sobel_Edge_Mag( Image &image )
                 for (int c2 = 0; c2 < 3; c2++)
                 {
                     //here we use modulus wrapping in lookup
-                    intensityX += imageCopy[(r + r2 - 1 + nrows) % nrows][(c + c2 - 1 + nrows) % ncols] * filterGx[r2][c2];
-                    intensityY += imageCopy[(r + r2 - 1 + nrows) % nrows][(c + c2 - 1 + nrows) % ncols] * filterGy[r2][c2];
+                    intensityX += imageCopy[(r + r2 - 1 + nrows) % nrows][(c + c2 - 1 + ncols) % ncols] * filterGx[r2][c2];
+                    intensityY += imageCopy[(r + r2 - 1 + nrows) % nrows][(c + c2 - 1 + ncols) % ncols] * filterGy[r2][c2];
                 }
             }
 
             //calculate magnitude
             magnitude = sqrt((intensityX*intensityX)+(intensityY*intensityY));
 
-            //convert magnitude to intensity level
-            image[r][c] = (magnitude / 2 * M_PI) * 255;
+            if(magnitude > 255)
+                magnitude = 255;
+            else if(magnitude < 0)
+                magnitude = 0;
+
+            image[r][c] = magnitude;
 
             //reset average intensities
             intensityX = 0;
