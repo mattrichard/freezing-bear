@@ -12,10 +12,6 @@ Modifications:
 
 #include "mainwindow.h"
 
-#include <cmath>
-
-using namespace std;
-
 /******************************************************************************
  * Function: Menu_Neighborhood_KirshDirection
  * Description: Uses 8 kirsh masks to detect edge direction on the given image.

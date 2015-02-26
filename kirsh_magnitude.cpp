@@ -1,8 +1,16 @@
+/*
+
+kirsh_magnitude.cpp
+
+Assignment 2 for CSC 442
+
+Author: Aubrey Olson // Matt Richard
+Date:   Feb 2015
+
+Modifications:
+*/
+
 #include "mainwindow.h"
-
-#include <cmath>
-
-using namespace std;
 
 /******************************************************************************
  * Function: Menu_Neighborhood_KirshDirection
